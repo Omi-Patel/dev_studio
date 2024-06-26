@@ -4,7 +4,7 @@ import Link from "next/link";
 import { useRouter } from "next/navigation";
 import React, { useState } from "react";
 
-const page = () => {
+const Login = () => {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
 
@@ -149,7 +149,7 @@ const page = () => {
               </button>
             </div>
             <p className="mt-2 text-base text-center text-gray-600">
-              Don't have an account?{" "}
+              Don&apos;t have an account?{" "}
               <Link
                 href={"/signup"}
                 title=""
@@ -172,4 +172,4 @@ const page = () => {
   );
 };
 
-export default page;
+export default Login;

@@ -3,7 +3,7 @@
 import Link from "next/link";
 import React, { useEffect, useState } from "react";
 
-const page = () => {
+const Wallet = () => {
   const [data, setData] = useState([]);
   const [time, setTime] = useState("");
 
@@ -283,4 +283,4 @@ const page = () => {
   );
 };
 
-export default page;
+export default Wallet;
