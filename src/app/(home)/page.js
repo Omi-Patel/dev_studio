@@ -4,10 +4,14 @@ import Link from "next/link";
 export default function Home() {
   return (
     <div className="">
-      <div className="p-4 flex justify-end pr-6 font-medium">Skip</div>
+      <div className="p-4  flex justify-end  font-medium">
+        <Link href={"/wallet"}>
+          <span className=" px-3 py-1">Skip</span>
+        </Link>
+      </div>
       <div className="flex flex-col sm:flex-row justify-center items-center  m-10">
         <div>
-          <Image src={"/hero.png"} width={500} height={500} />
+          <Image src={"/hero.png"} width={500} height={500} alt="imgage" />
         </div>
         <div className="flex flex-col items-center justify-center mx-auto sm:w-[50%]">
           <h1 className="text-3xl sm:text-4xl font-bold tracking-wide py-3">
@@ -20,7 +24,7 @@ export default function Home() {
         </div>
       </div>
       <div className="bg-green-100  flex justify-center w-24 h-24 rounded-full items-center mx-auto border-2 border-green-800">
-        <Link href={"/profile"}>
+        <Link href={"/signup"}>
           <div className="p-5 bg-green-400 rounded-full">
             <svg
               xmlns="http://www.w3.org/2000/svg"

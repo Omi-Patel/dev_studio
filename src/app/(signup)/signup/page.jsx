@@ -1,89 +1,145 @@
-import React from "react";
+"use client";
+
+import Link from "next/link";
+import { useRouter } from "next/navigation";
+import React, { useState } from "react";
+import { PhoneInput } from "react-international-phone";
+import "react-international-phone/style.css";
 
 function Signup() {
+  const [phone, setPhone] = useState("");
+  const [name, setName] = useState("");
+  const [email, setEmail] = useState("");
+  const [gender, setGender] = useState("");
+
+  const router = useRouter();
+
+  const signupHandle = (e) => {
+    e.preventDefault();
+    // console.log("OMMM");
+    router.push("/wallet");
+  };
+
   return (
     <section>
-      <div className="grid grid-cols-1 lg:grid-cols-2">
-        <div className="flex items-center justify-center px-4 py-10 sm:px-6 sm:py-16 lg:px-8 lg:py-24">
-          <div className="xl:mx-auto xl:w-full xl:max-w-sm 2xl:max-w-md">
-            <h2 className="text-3xl font-bold leading-tight text-black sm:text-4xl">
-              Sign up
+      <div className=" p-3 flex gap-1 sm:pl-6 font-medium ">
+        <Link
+          href={"/wallet"}
+          className=" flex justify-center items-center px-2"
+        >
+          <span>
+            <svg
+              xmlns="http://www.w3.org/2000/svg"
+              fill="none"
+              viewBox="0 0 24 24"
+              strokeWidth={1.5}
+              stroke="currentColor"
+              className="size-4"
+            >
+              <path
+                strokeLinecap="round"
+                strokeLinejoin="round"
+                d="M15.75 19.5 8.25 12l7.5-7.5"
+              />
+            </svg>
+          </span>
+          <span>Back</span>
+        </Link>
+      </div>
+      <div className="">
+        <div className="flex items-center justify-center px-4 py-10 sm:px-6 sm:py-16 lg:px-8 lg:py-24 ">
+          <div className="xl:mx-auto xl:w-full xl:max-w-sm 2xl:max-w-md ">
+            <h2 className="text-2xl font-medium leading-tight text-black/70 sm:text-4xl">
+              Sign up with you email or phone number
             </h2>
-            <p className="mt-2 text-base text-gray-600">
-              Already have an account?{" "}
-              <a
-                href="#"
-                title=""
-                className="font-medium text-black transition-all duration-200 hover:underline"
-              >
-                Sign In
-              </a>
-            </p>
-            <form action="#" method="POST" className="mt-8">
+
+            <form onSubmit={signupHandle} className="mt-8">
               <div className="space-y-5">
                 <div>
-                  <label
-                    htmlFor="name"
-                    className="text-base font-medium text-gray-900"
-                  >
-                    {" "}
-                    Full Name{" "}
-                  </label>
                   <div className="mt-2">
                     <input
                       className="flex h-10 w-full rounded-md border border-gray-300 bg-transparent px-3 py-2 text-sm placeholder:text-gray-400 focus:outline-none focus:ring-1 focus:ring-gray-400 focus:ring-offset-1 disabled:cursor-not-allowed disabled:opacity-50"
                       type="text"
                       placeholder="Full Name"
                       id="name"
+                      value={name}
+                      onChange={(e) => setName(e.target.value)}
+                      required
                     ></input>
                   </div>
                 </div>
                 <div>
-                  <label
-                    htmlFor="email"
-                    className="text-base font-medium text-gray-900"
-                  >
-                    {" "}
-                    Email address{" "}
-                  </label>
                   <div className="mt-2">
                     <input
                       className="flex h-10 w-full rounded-md border border-gray-300 bg-transparent px-3 py-2 text-sm placeholder:text-gray-400 focus:outline-none focus:ring-1 focus:ring-gray-400 focus:ring-offset-1 disabled:cursor-not-allowed disabled:opacity-50"
                       type="email"
                       placeholder="Email"
                       id="email"
+                      value={email}
+                      onChange={(e) => setEmail(e.target.value)}
+                      required
                     ></input>
                   </div>
                 </div>
                 <div>
-                  <div className="flex items-center justify-between">
-                    <label
-                      htmlFor="password"
-                      className="text-base font-medium text-gray-900"
-                    >
-                      {" "}
-                      Password{" "}
-                    </label>
+                  {/* phone  */}
+                  <div className="  rounded-xl gap-1">
+                    <PhoneInput
+                      defaultCountry="in"
+                      value={phone}
+                      onChange={(phone) => setPhone(phone)}
+                      className="w-full "
+                      // required
+                    />
                   </div>
+                </div>
+                <div>
+                  <div className="flex items-center justify-between"></div>
                   <div className="mt-2">
                     <input
                       className="flex h-10 w-full rounded-md border border-gray-300 bg-transparent px-3 py-2 text-sm placeholder:text-gray-400 focus:outline-none focus:ring-1 focus:ring-gray-400 focus:ring-offset-1 disabled:cursor-not-allowed disabled:opacity-50"
-                      type="password"
-                      placeholder="Password"
-                      id="password"
+                      type="text"
+                      placeholder="Gender"
+                      id="gender"
+                      value={gender}
+                      onChange={(e) => setGender(e.target.value)}
                     ></input>
                   </div>
                 </div>
-                <div>
+                <div className="text-sm text-gray-400 flex  gap-2">
+                  <span>
+                    <svg
+                      xmlns="http://www.w3.org/2000/svg"
+                      fill="none"
+                      viewBox="0 0 24 24"
+                      strokeWidth={1.5}
+                      stroke="currentColor"
+                      className="size-5 flex justify-center items-center text-green-500"
+                    >
+                      <path
+                        strokeLinecap="round"
+                        strokeLinejoin="round"
+                        d="M9 12.75 11.25 15 15 9.75M21 12a9 9 0 1 1-18 0 9 9 0 0 1 18 0Z"
+                      />
+                    </svg>
+                  </span>
+                  <span>
+                    By signing up, you agree to the{" "}
+                    <span className="text-green-500">Terms of service</span> and{" "}
+                    <span className="text-green-500">Privacy policy</span>.
+                  </span>
+                </div>
+
+                <div className="">
                   <button
-                    type="button"
-                    className="inline-flex w-full items-center justify-center rounded-md bg-black px-3.5 py-2.5 font-semibold leading-7 text-white hover:bg-black/80"
+                    type="submit"
+                    className="inline-flex w-full items-center justify-center rounded-md bg-green-700 px-3.5 py-2.5 font-semibold leading-7 text-white hover:bg-green-900 mt-6"
                   >
-                    Create Account
+                    Sign Up
                   </button>
                 </div>
               </div>
-            </form> 
+            </form>
             <div className="mt-3 space-y-3">
               <button
                 type="button"
@@ -118,15 +174,25 @@ function Signup() {
                 Sign up with Facebook
               </button>
             </div>
+            <p className="mt-2 text-base text-center text-gray-600">
+              Already have an account?{" "}
+              <Link
+                href={"/login"}
+                title=""
+                className="font-medium text-green-500 transition-all duration-200 hover:underline"
+              >
+                Sign In
+              </Link>
+            </p>
           </div>
         </div>
-        <div className="h-full w-full">
+        {/* <div className="h-full w-full">
           <img
             className="mx-auto h-full w-full rounded-md object-cover"
             src="https://images.unsplash.com/photo-1559526324-4b87b5e36e44?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1742&q=80"
             alt=""
           />
-        </div>
+        </div> */}
       </div>
     </section>
   );
