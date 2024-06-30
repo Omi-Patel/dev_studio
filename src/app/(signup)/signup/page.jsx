@@ -16,6 +16,12 @@ function Signup() {
 
   const signupHandle = (e) => {
     e.preventDefault();
+
+    if(email.length < 10 ){
+      return router.push('/signup')
+    }
+
+    console.log(name + email + gender);
     // console.log("OMMM");
     router.push("/wallet");
   };

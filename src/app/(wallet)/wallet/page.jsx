@@ -9,7 +9,7 @@ const Wallet = () => {
 
   const allData = async () => {
     const blob = await fetch(
-      "https://299e2f7a-3a0f-4d1e-b8f4-8fe77bee946a.mock.pstmn.io/wallet-summary"
+      "https://www.thedevstudio.in/api/react-internship-wallet-summary"
     );
     const res = await blob.json();
 
